@@ -18,42 +18,16 @@ Patch 003 is stacked on:
 501ffe7d352abe4eb01ce0afbd498f0cf4fb03ac
 ```
 
-Patch 002 established a successful local Apple Silicon macOS build of the
-unmodified OpenHantek6022 application.
+Patch 002 verified an Apple Silicon macOS build of the unmodified application,
+including `[100%] Built target OpenHantek` and creation of
+`build/openhantek/OpenHantek.app`.
 
-Verified Patch 002 evidence:
-
-- host: macOS 26.5.2 / Darwin 25.5.0 / arm64;
-- Apple Command Line Tools and Apple Clang;
-- CMake 4.3.4;
-- Homebrew 6.0.5;
-- Git 2.54.0;
-- Qt 6.11.1;
-- build completed with `[100%] Built target OpenHantek`;
-- application bundle created at `build/openhantek/OpenHantek.app`;
-- no runtime source change was required for the build baseline.
-
-Observed non-fatal warnings:
-
-- libusb flexible or zero-length arrays;
-- ignored `nodiscard` result in
-  `openhantek/src/usb/uploadFirmware.cpp`;
-- missing `WrapVulkanHeaders`.
+Patch 002 did not verify visible demo behavior, USB acquisition, firmware,
+physical hardware, packaging, synchronization, or measurement correctness.
 
 ## Patch 003 status
 
-**Status:** IN PROGRESS / UNMERGED.
-
-Completed and pushed:
-
-- branching strategy documentation;
-- release process documentation;
-- system architecture;
-- design decisions `DD-001` through `DD-009`;
-- technical-patch design-decision traceability rule;
-- patch history;
-- detailed Patch 003 record;
-- reproducible applicators and validators for Commit A and Commit B.
+**Status:** FINAL STRUCTURAL VALIDATION IN PROGRESS / UNMERGED.
 
 Published commits:
 
@@ -63,45 +37,58 @@ Patch 003: add architecture documents
 
 f7fbfdca6635fc0a0990767ae527b82e3adc5842
 Patch 003: add patch history
+
+9200cbab1a7823693a5918c24df75cd44323c83f
+Patch 003: synchronize handoff documents
+
+bc3cad41da5a1630c936a21eb3e519dad6609294
+Patch 003: add validation and development workflow
 ```
 
 Current work:
 
 ```text
-Commit C
-Patch 003: synchronize handoff documents
+Commit E
+Patch 003: finalize legacy pointers and structural validation
 ```
+
+## Completed Patch 003 scope
+
+- branching strategy;
+- release process;
+- system architecture;
+- design decisions `DD-001` through `DD-009`;
+- patch history;
+- canonical handoff documents;
+- validation workflow;
+- complete development workflow;
+- GitHub workflow and write-safety rules;
+- repository-local applicators and validators;
+- canonical ownership under `docs/handoff/`.
 
 ## Verified
 
-- The Patch 003 branch exists and tracks origin.
-- Commit A passed its architecture-document validator.
-- Commit B passed its history-document validator.
-- `DD-001` through `DD-009` are present.
-- Every technical patch must reference applicable design decisions.
-- No OpenHantek runtime or firmware changes were introduced by Commit A or
-  Commit B.
-- Patch history now distinguishes build, runtime, USB, firmware, hardware,
-  packaging, synchronization, and measurement evidence.
+- Commits A through D are published on the Patch 003 branch.
+- Their local validators passed before publication.
+- Canonical reading order is `docs/handoff/MASTER_INDEX.md`.
+- Evidence classes distinguish documentation, build, runtime, USB, firmware,
+  hardware, synchronization, packaging, and measurement claims.
+- Technical patches must reference applicable design decisions.
+- Patch 003 has introduced no intended OpenHantek runtime or firmware change.
 
 ## Inferred
 
-- Available external material suggests that the 6022BL may contain separate
-  analog and digital acquisition functions behind an internal USB arrangement.
-- Standardized documentation should make future work easier to review and
-  continue across sessions.
-
-These remain inferences, not runtime or hardware evidence.
+The standardized repository structure should improve reviewability and
+continuation across sessions. This is a process inference, not runtime evidence.
 
 ## Unknown or unverified
 
 - visible demo-mode operation;
 - physical Hantek device enumeration;
-- exact PCB revision and internal USB topology;
-- whether analog and digital functions can be opened concurrently;
-- whether both streams can run concurrently without loss;
+- exact PCB revision and USB topology;
+- concurrent analog and digital operation;
+- sustained transfer capacity;
 - clock relationships;
-- sustained throughput;
 - relative offset, jitter, and drift;
 - mixed-signal synchronization feasibility;
 - packaging and distribution;
@@ -111,19 +98,16 @@ These remain inferences, not runtime or hardware evidence.
 
 - Do not perform mains-referenced measurements with this USB oscilloscope.
 - Keep experimental firmware RAM-loaded until recovery is demonstrated.
-- Do not claim hardware behavior without physical evidence.
-- Preserve upstream-compatible oscilloscope behavior unless a validated patch
-  explicitly changes it.
+- Treat the purchased hardware as the final source of hardware truth.
+- Preserve upstream-compatible behavior unless a validated patch changes it.
 
 ## Immediate next work
 
-Complete Patch 003 documentation standardization:
+1. run Commit E final structural validation;
+2. stage exactly the intended Commit E files;
+3. publish Commit E;
+4. verify the published commit;
+5. open a draft pull request from Patch 003 to Patch 002.
 
-1. synchronize canonical handoff documents;
-2. add the validation workflow;
-3. complete development and Git workflow documents;
-4. convert legacy duplicate documents to non-authoritative pointers;
-5. run final structural comparison against Patch 002;
-6. open a draft pull request targeting Patch 002.
-
-No runtime change should begin before Patch 003 is reviewed and accepted.
+No runtime, USB, firmware, or hardware modification should begin before Patch
+003 is reviewed and accepted.

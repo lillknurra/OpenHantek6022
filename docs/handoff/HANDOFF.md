@@ -1,19 +1,8 @@
 # Handoff
 
-## Purpose
-
-This document is the exact continuation point for the next OpenHantek6022
-development session.
-
-## Repository state
+## Exact continuation point
 
 Repository:
-
-```text
-lillknurra/OpenHantek6022
-```
-
-Local path:
 
 ```text
 ~/GitHub/OpenHantek6022
@@ -25,85 +14,58 @@ Active branch:
 project/patch-003-project-standardization
 ```
 
-Base branch:
+Target branch:
 
 ```text
 project/patch-002-macos-build-baseline
 ```
 
-Accepted technical base commit:
+Base commit:
 
 ```text
 501ffe7d352abe4eb01ce0afbd498f0cf4fb03ac
 ```
 
-## Current patch
-
-```text
-Patch 003 - Project standardization
-```
-
-Patch type:
-
-```text
-documentation and project infrastructure only
-```
-
-No OpenHantek runtime or firmware change is intended.
-
-## Completed and published
-
-### Commit A
+## Published Patch 003 commits
 
 ```text
 9a90ec76ec9ce1ecdd7cd0791f2a6204e2dc325f
 Patch 003: add architecture documents
-```
 
-Result:
-
-- `SYSTEM_ARCHITECTURE.md` present;
-- `DESIGN_DECISIONS.md` present;
-- `DD-001` through `DD-009` present;
-- technical-patch traceability requirement present;
-- architecture validator passed;
-- no runtime or firmware files changed.
-
-### Commit B
-
-```text
 f7fbfdca6635fc0a0990767ae527b82e3adc5842
 Patch 003: add patch history
+
+9200cbab1a7823693a5918c24df75cd44323c83f
+Patch 003: synchronize handoff documents
+
+bc3cad41da5a1630c936a21eb3e519dad6609294
+Patch 003: add validation and development workflow
 ```
-
-Result:
-
-- `PATCH_HISTORY.md` present;
-- `PATCH_003.md` present;
-- design-decision references present;
-- history validator passed;
-- no runtime or firmware files changed.
 
 ## Current work
 
-Commit C:
+Commit E:
 
 ```text
-Patch 003: synchronize handoff documents
+Patch 003: finalize legacy pointers and structural validation
 ```
 
-Expected files:
+Expected changed files:
 
 ```text
-docs/handoff/MASTER_INDEX.md
+docs/MASTER_INDEX.md
+docs/CURRENT_STATE.md
+docs/AI_MEMORY.md
 docs/handoff/CURRENT_STATE.md
 docs/handoff/AI_MEMORY.md
 docs/handoff/HANDOFF.md
-scripts/apply_patch_003_handoff_docs.py
-scripts/validate_patch_003_handoff_docs.py
+docs/history/PATCH_HISTORY.md
+docs/history/PATCH_003.md
+scripts/apply_patch_003_finalization.py
+scripts/validate_patch_003_final_structure.py
 ```
 
-Design decisions:
+## Design decisions
 
 ```text
 Implements:
@@ -114,41 +76,32 @@ DD-008
 DD-009
 ```
 
-## Validation requirements for Commit C
+## Commit E validation
 
-- all four handoff documents exist;
-- `MASTER_INDEX.md` defines the sole canonical reading order;
-- internal paths referenced by `MASTER_INDEX.md` exist;
-- `CURRENT_STATE.md` records Patch 002 evidence and Patch 003 status honestly;
-- `AI_MEMORY.md` records durable method and design decisions;
-- `HANDOFF.md` records exact continuation;
-- no runtime or firmware files changed relative to Patch 002;
-- `git diff --check` passes;
-- only the six intended files are staged.
+Commit E must verify:
+
+- the three legacy documents are non-authoritative pointers;
+- canonical handoff documents exist;
+- required architecture, history, development, build, and technical-baseline
+  documents exist;
+- canonical references resolve;
+- Patch 003 contains no runtime or firmware changes relative to Patch 002;
+- only documentation and scripts changed;
+- worktree and staged whitespace checks pass;
+- the exact intended Commit E file set is staged before commit.
 
 ## Known limitations
 
-The following are not verified:
+Patch 003 does not validate application runtime, USB behavior, firmware,
+physical hardware, synchronization, packaging, or measurement correctness.
 
-- visible demo-mode operation;
-- Hantek hardware operation;
-- USB acquisition;
-- firmware behavior;
-- simultaneous analog and digital capture;
-- synchronization;
-- packaging;
-- measurement correctness.
+## After Commit E
 
-## Rollback
+Verify the pushed commit and open a draft pull request:
 
-Before merge, discard the Patch 003 branch or revert individual commits.
-
-After merge, revert the relevant commits. Do not rewrite published history.
-
-## Next after Commit C
-
-Add the canonical validation workflow and finish the development/Git workflow
-documents. Then convert legacy duplicate files to compatibility pointers and
-run final Patch 003 structural validation.
+```text
+base: project/patch-002-macos-build-baseline
+head: project/patch-003-project-standardization
+```
 
 Do not begin runtime or hardware work until Patch 003 is accepted.

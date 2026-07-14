@@ -2,222 +2,112 @@
 
 ## Identity
 
-**Title:** Project standardization  
-**Branch:** `project/patch-003-project-standardization`  
-**Base:** `project/patch-002-macos-build-baseline`  
-**Status:** IN PROGRESS / UNMERGED  
-**Patch type:** documentation and project infrastructure
+**Branch:** `project/patch-003-project-standardization`
+**Base:** `project/patch-002-macos-build-baseline`
+**Base commit:** `501ffe7d352abe4eb01ce0afbd498f0cf4fb03ac`
+**Status:** FINAL STRUCTURAL VALIDATION IN PROGRESS / UNMERGED
+**Type:** documentation and project infrastructure
 
 ## Purpose
 
-Create a coherent, repository-owned engineering method for continued
-OpenHantek6022 research and development.
-
-Patch 003 standardizes:
-
-- official document ownership and reading order;
-- architecture boundaries;
-- durable design decisions;
-- patch planning and validation;
-- branching and Git workflow;
-- release discipline;
-- patch history;
-- handoff and current-state maintenance.
+Create a coherent repository-owned engineering method for continued
+OpenHantek6022 work without changing runtime or firmware behavior.
 
 ## Non-goals
 
-Patch 003 does not:
+Patch 003 does not validate or change:
 
-- change OpenHantek runtime source;
-- change USB behavior;
-- change device firmware;
-- claim mixed-signal synchronization;
-- validate physical Hantek hardware;
-- validate demo-mode user-visible operation;
-- create a distributable release;
-- merge itself into Patch 002 or `main`.
+- visible application runtime;
+- USB acquisition;
+- device firmware;
+- physical hardware;
+- simultaneous analog and digital capture;
+- synchronization;
+- packaging;
+- measurement correctness.
 
 ## Design decisions
 
-**Implements:**
+**Implements:** `DD-002`, `DD-003`, `DD-007`, `DD-008`, `DD-009`
+**Depends on:** `DD-001`, `DD-004`, `DD-005`, `DD-006`
+**Updates:** None
+**Supersedes:** None
 
-- `DD-002` - Evidence determines correctness.
-- `DD-003` - Use small reversible patches.
-- `DD-007` - Documentation owns durable project memory.
-- `DD-008` - Separate infrastructure from runtime functionality.
-- `DD-009` - Technical patches must reference design decisions.
+## Published commits
 
-**Depends on:**
-
-- `DD-001` - Preserve upstream-compatible behavior.
-- `DD-004` - Physical hardware is the final source of truth.
-- `DD-005` - Keep firmware experiments recoverable.
-- `DD-006` - Prove USB behavior before mixed-signal design.
-
-**Updates:** None.  
-**Supersedes:** None.
-
-## Accepted starting baseline
-
-Patch 003 is stacked on the accepted Patch 002 commit:
-
-```text
-501ffe7d352abe4eb01ce0afbd498f0cf4fb03ac
-```
-
-Patch 002 established a successful local Apple Silicon macOS build of the
-unmodified application. It did not establish demo, USB, firmware, hardware,
-packaging, synchronization, or measurement correctness.
-
-## Planned document groups
-
-### Commit A - Architecture documents
-
-Commit message:
-
-```text
-Patch 003: add architecture documents
-```
-
-Scope:
-
-- `docs/architecture/SYSTEM_ARCHITECTURE.md`
-- `docs/architecture/DESIGN_DECISIONS.md`
-- reproducible architecture applicator;
-- architecture validator.
-
-Status: COMPLETE / PUSHED.
-
-Published commit:
+### Commit A
 
 ```text
 9a90ec76ec9ce1ecdd7cd0791f2a6204e2dc325f
+Patch 003: add architecture documents
 ```
 
-Validation:
+Added system architecture, design decisions, and traceability requirements.
+
+### Commit B
 
 ```text
-PASS: branch=project/patch-003-project-standardization
-PASS: architecture documents present
-PASS: DD-001 through DD-009 present
-PASS: technical-patch traceability requirement present
-PASS: no OpenHantek runtime or firmware files changed
-PASS: whitespace check
-```
-
-### Commit B - Patch history
-
-Commit message:
-
-```text
+f7fbfdca6635fc0a0990767ae527b82e3adc5842
 Patch 003: add patch history
 ```
 
-Scope:
+Added chronological and detailed patch records.
 
-- `docs/history/PATCH_HISTORY.md`
-- `docs/history/PATCH_003.md`
-- reproducible history applicator;
-- history validator.
+### Commit C
 
-Status: IN PROGRESS.
+```text
+9200cbab1a7823693a5918c24df75cd44323c83f
+Patch 003: synchronize handoff documents
+```
 
-### Later Patch 003 groups
+Established canonical handoff, state, memory, and reading order.
 
-Planned later groups include:
+### Commit D
 
-- canonical handoff and current-state documents;
-- validation workflow;
-- completed development and Git workflow;
-- compatibility pointers for legacy top-level documents;
-- final structural validation and completion record.
+```text
+bc3cad41da5a1630c936a21eb3e519dad6609294
+Patch 003: add validation and development workflow
+```
 
-Exact grouping may be refined, but scope must remain documentation and project
-infrastructure only.
+Completed validation, development, publication, and GitHub workflow rules.
 
-## Validation model
+### Commit E
 
-Patch 003 uses documentation-only validation.
+```text
+Patch 003: finalize legacy pointers and structural validation
+```
 
-Required checks include:
+Converts legacy documents to non-authoritative pointers, synchronizes final
+handoff state, and verifies the complete Patch 003 structure against Patch 002.
 
-1. expected files exist;
-2. required headings and markers exist;
-3. internal repository paths are valid;
-4. design-decision references are present where required;
-5. no runtime or firmware files changed relative to Patch 002;
-6. `git diff --check` passes;
-7. staged files exactly match the commit plan.
+## Final validation requirements
 
-A documentation validator passing does not validate application runtime or
-hardware behavior.
-
-## Evidence classification
-
-### Verified
-
-- Patch 003 branch exists and is based on Patch 002.
-- Architecture documents have been created and pushed.
-- `DD-001` through `DD-009` are recorded.
-- Technical patches are required to reference design decisions.
-- Commit A validator passed.
-- Commit A did not alter OpenHantek runtime or firmware files.
-
-### Inferred
-
-- The standardized document structure should make future work easier to review
-  and continue across conversations.
-
-This remains an engineering-process inference, not runtime evidence.
-
-### Unknown or unverified
-
-- visible demo operation;
-- physical Hantek enumeration and acquisition;
-- internal USB topology of the purchased device;
-- concurrent analog and digital operation;
-- clock relationships;
-- sustained throughput;
-- offset, jitter, and drift;
-- packaging and distribution.
+- canonical reading order exists;
+- architecture and design decisions exist;
+- patch history exists;
+- validation and development workflows exist;
+- legacy duplicate state documents are pointers only;
+- internal canonical paths resolve;
+- no runtime or firmware files changed relative to Patch 002;
+- changed files are limited to documentation and scripts;
+- worktree and staged whitespace checks pass;
+- exact Commit E file set is staged.
 
 ## Rollback
 
-Before merge, rollback consists of discarding or deleting the Patch 003 branch.
+Before merge, delete or abandon the Patch 003 branch.
 
-After merge, rollback consists of reverting the relevant Patch 003 commits.
-Published history must not be rewritten.
-
-Applicator scripts must refuse to overwrite differing existing documents
-without explicit review.
+After publication, revert the relevant commits. Do not rewrite published
+history.
 
 ## Completion criteria
 
-Patch 003 is complete only when:
+Patch 003 may be marked `COMPLETE / UNMERGED` after Commit E:
 
-- canonical reading order is defined;
-- current state and durable AI memory are synchronized;
-- architecture and design decisions are recorded;
-- branching, development, Git, release, and validation workflows are complete;
-- patch history and Patch 003 record are complete;
-- legacy duplicate documents are converted to non-authoritative pointers where
-  required;
-- structural validation passes;
-- comparison against Patch 002 confirms no runtime or firmware changes;
-- final handoff records limitations and the exact next patch;
-- the user accepts the patch for review or merge.
+1. validator passes;
+2. exact intended files are committed;
+3. commit is pushed and verified;
+4. branch is synchronized with origin.
 
-## Current continuation point
-
-Complete Commit B using the repository-local applicator and validator. Review
-the diff, stage exactly the four intended files, commit with:
-
-```text
-Patch 003: add patch history
-```
-
-Then push to:
-
-```text
-origin/project/patch-003-project-standardization
-```
+The next action is a draft pull request targeting
+`project/patch-002-macos-build-baseline`.
