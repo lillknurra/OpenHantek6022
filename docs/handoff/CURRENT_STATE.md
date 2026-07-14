@@ -6,58 +6,38 @@ Last updated: 2026-07-14
 
 - Fork: `lillknurra/OpenHantek6022`
 - Local repository: `~/GitHub/OpenHantek6022`
-- Active branch: `project/patch-004-post-merge-state-lock`
+- Active branch: `project/patch-005-demo-runtime-baseline`
 - Base branch: `project/patch-002-macos-build-baseline`
-- Base commit: `1ce5d559dce0e7d1f4fcd0c69f9fe1744cee10b8`
-
-## Patch 003 status
-
-**Status:** COMPLETE / MERGED.
-
-```text
-PR #2
-Merge commit: 1ce5d559dce0e7d1f4fcd0c69f9fe1744cee10b8
-```
-
-Patch 003 standardized architecture, decisions, history, handoff, validation,
-development, release, branching, and GitHub workflow without runtime or
-firmware changes.
+- Base commit: `bd6d86b5f21bb07efc6c06b7432dde36d1214b34`
 
 ## Patch 004 status
 
-**Status:** IN PROGRESS / UNMERGED.
+**Status:** COMPLETE / MERGED through PR #3.
+
+## Patch 005 status
+
+**Status:** VALIDATED LOCALLY / UNMERGED.
 
 ```text
-project/patch-004-post-merge-state-lock
-Patch 004: lock merged state and add GitHub CLI workflow
+Runtime result: PASS
+Reason: User visually confirmed visible, updating, responsive demo mode
 ```
-
-Purpose:
-
-- lock the merged Patch 003 state;
-- record PR #2 and its merge commit;
-- add the standard GitHub CLI ready/merge/delete-branch workflow;
-- identify Patch 005 as the next technical patch.
 
 ## Verified
 
-- PR #2 is merged.
-- The local base branch was updated to the merge commit.
-- GitHub CLI is available locally.
-- Patch 003 introduced no intended runtime or firmware changes.
+- Apple Silicon macOS build and application bundle creation from Patch 002.
+- Patch 003 and Patch 004 are merged.
+- Patch 005 process survived startup and produced durable evidence.
+- Visible demo-mode result is exactly `PASS`.
 
 ## Unknown or unverified
 
-- visible demo-mode operation;
-- physical Hantek operation;
-- USB topology and acquisition;
-- concurrent analog and digital operation;
-- synchronization and measurement correctness.
+- physical Hantek enumeration and acquisition;
+- exact hardware revision and USB topology;
+- concurrent analog and digital acquisition;
+- synchronization;
+- packaging and measurement correctness.
 
 ## Immediate next work
 
-Complete and merge Patch 004. Then begin:
-
-```text
-Patch 005 - visible demo-mode runtime baseline
-```
+Review and merge Patch 005. Then begin Patch 006 - USB enumeration baseline.

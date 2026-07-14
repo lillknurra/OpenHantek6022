@@ -1,41 +1,23 @@
 # Patch 004 - Post-Merge State Lock and GitHub CLI Workflow
 
-## Identity
-
-- Branch: `project/patch-004-post-merge-state-lock`
-- Base: `project/patch-002-macos-build-baseline`
-- Base commit: `1ce5d559dce0e7d1f4fcd0c69f9fe1744cee10b8`
-- Status: IN PROGRESS / UNMERGED
-- Type: documentation and workflow
-
-## Purpose
-
-Lock the actual post-merge state of Patch 003 and standardize GitHub CLI
-commands for readying, merging, deleting the remote branch, and synchronizing
-the local base branch.
-
-## Design decisions
-
-**Implements:** `DD-002`, `DD-003`, `DD-007`, `DD-008`, `DD-009`
-
-## Merge evidence
+## Status
 
 ```text
-PR #2
-Merge commit: 1ce5d559dce0e7d1f4fcd0c69f9fe1744cee10b8
+COMPLETE / MERGED
 ```
 
-## GitHub CLI workflow
+## Merge identity
 
-```bash
-gh pr ready PR_NUMBER
-gh pr merge PR_NUMBER --merge --delete-branch
+```text
+PR #3
+Merge commit: bd6d86b5f21bb07efc6c06b7432dde36d1214b34
+Target: project/patch-002-macos-build-baseline
 ```
 
-## Non-goals
+## Result
 
-No runtime, USB, firmware, hardware, synchronization, packaging, or measurement
-change or validation.
+Patch 004 locked the Patch 003 merge state and documented the GitHub CLI ready,
+merge, branch-deletion, and post-merge synchronization workflow.
 
 ## Next patch
 

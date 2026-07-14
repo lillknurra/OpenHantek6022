@@ -1,0 +1,30 @@
+Patch 005 demo runtime
+UTC: 2026-07-14T12:54:43Z
+Branch: project/patch-005-demo-runtime-baseline
+Commit: bd6d86b5f21bb07efc6c06b7432dde36d1214b34
+macOS: 26.5.2
+Architecture: arm64
+Executable: /Users/petter/GitHub/OpenHantek6022/build/openhantek/OpenHantek.app/Contents/MacOS/OpenHantek
+Command: /Users/petter/GitHub/OpenHantek6022/build/openhantek/OpenHantek.app/Contents/MacOS/OpenHantek -d
+Graphic: 2.1 Metal - 90.5 - GLSL version 1.50
+QOpenGLShader::compile(Vertex): ERROR: 0:2: '' :  version '150' is not supported
+
+*** Problematic Vertex shader source code ***
+
+          #version 150
+#define lowp
+#define mediump
+#define highp
+#line 2
+          in highp vec3 vertex;
+          uniform mat4 matrix;
+          void main()
+          {
+              gl_Position = matrix * vec4(vertex, 1.0);
+              gl_PointSize = 1.0;
+          }
+
+
+***
+Switching to GLSL version 1.20, use the command line option '--useGLSL120' or '--useGLES'
+OpenHantek6022 has stopped after 30 s
