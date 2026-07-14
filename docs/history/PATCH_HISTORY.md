@@ -8,28 +8,27 @@
 
 **Status:** ACCEPTED.
 
-Verified a successful Apple Silicon build. Visible demo operation remained
-unverified.
+Verified build completion and application bundle creation. Visible runtime was
+not verified by Patch 002.
 
 ## Patch 003 - Project standardization
 
-**Status:** COMPLETE / MERGED.
-
-```text
-PR #2
-Merge commit: 1ce5d559dce0e7d1f4fcd0c69f9fe1744cee10b8
-```
-
-Established architecture, design decisions, history, handoff, validation, and
-workflow without intended runtime or firmware changes.
+**Status:** COMPLETE / MERGED through PR #2.
 
 ## Patch 004 - Post-merge state lock and GitHub CLI workflow
 
-**Status:** IN PROGRESS / UNMERGED.
+**Status:** COMPLETE / MERGED through PR #3.
 
 ```text
-project/patch-004-post-merge-state-lock
+Merge commit: bd6d86b5f21bb07efc6c06b7432dde36d1214b34
 ```
 
-Locks Patch 003's merge identity, adds GitHub CLI PR completion commands, and
-sets Patch 005 as the next technical patch.
+## Patch 005 - Visible demo-mode runtime baseline
+
+**Status:** VALIDATED LOCALLY / UNMERGED.
+
+```text
+Runtime result: PASS
+```
+
+Detailed record: `docs/history/PATCH_005.md`
